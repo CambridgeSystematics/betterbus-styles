@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+body {
+  color: #3E3E3E;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Caveat Brush", cursive;
+}
+
+#sidebar_first .block {
+  background: transparent;
+  margin: 0;
+  border: none;
+}
