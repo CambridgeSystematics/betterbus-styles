@@ -6,44 +6,25 @@ body {
   line-height: 1.3;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Caveat Brush", sans-serif;
   line-height: 0.875;
   margin: 0 0 0.5em 0;
+  color: #005289;
 }
 
-h1 {
+h1, .h1 {
   font-size: 3.75em;
 }
 
-h2 {
+h2, .h2 {
   font-size: 3.125em;
-}
-h2.to-the-test {
-  color: #CBDB2F;
-  margin-top: 2em;
-  position: relative;
-}
-h2.to-the-test::after {
-  content: "";
-  background-image: url("/drupal/sites/default/files/inline-images/to-the-test-arrow.png");
-  position: absolute;
-  top: -4.5em;
-  right: -4em;
-  display: block;
-  width: 6em;
-  height: 5em;
-  background-size: 6em auto;
-  background-repeat: no-repeat;
 }
 
 .white-box {
   background-color: #ffffff;
   border-radius: 2.5rem;
-  padding: 3rem;
-}
-.white-box p {
-  color: #3E3E3E;
+  padding: 3rem !important;
 }
 
 .wp-block-button__link, .button {
@@ -69,7 +50,7 @@ h2.to-the-test::after {
   top: 0;
 }
 .wp-block-button__link::after, .button::after {
-  background-image: url("/drupal/sites/default/files/inline-images/button-arrow.png");
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/button-arrow.png");
   background-size: 1.5em auto;
   background-position: center center;
   background-repeat: no-repeat;
@@ -87,7 +68,7 @@ h2.to-the-test::after {
   border: 2px solid #1CA6DF;
 }
 .wp-block-button__link:hover::after, .button:hover::after {
-  background-image: url("/drupal/sites/default/files/inline-images/button-arrow-hov.png");
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/button-arrow-hov.png");
 }
 .wp-block-button__link:hover:before, .button:hover:before {
   background: #ffffff;
@@ -105,8 +86,8 @@ h2.to-the-test::after {
   position: fixed;
   top: 3em;
   left: 0;
-  width: 16em;
-  background-image: url("/drupal/sites/default/files/inline-images/navbg.png");
+  width: 16rem;
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/navbg.png");
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: top right;
@@ -150,20 +131,38 @@ h2.to-the-test::after {
 
 .page-section {
   padding: 3rem;
-  padding-left: 18em;
+  padding-left: 22rem;
   overflow: hidden;
 }
 .page-section > * {
-  max-width: 52em;
+  max-width: 66em;
 }
 .page-section p {
   font-size: 1.5em;
+  line-height: 1.3em;
 }
 .page-section p:last-child {
   margin-bottom: 0;
 }
-.page-section.page-intro {
+.page-section p strong {
+  color: #005289;
+  font-family: "Caveat Brush", sans-serif;
+  font-size: 1.5em;
+}
+.page-section p.footnote {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.75em;
+  line-height: 1.1;
+}
+.page-section.swirls-a, .page-section.swirls-b, .page-section.page-intro, .page-section.events {
   color: #ffffff;
+}
+.page-section.swirls-a h1, .page-section.swirls-a h2, .page-section.swirls-a h3, .page-section.swirls-a h4, .page-section.swirls-a h5, .page-section.swirls-a h6, .page-section.swirls-a .h1, .page-section.swirls-a .h2, .page-section.swirls-a .h3, .page-section.swirls-a .h4, .page-section.swirls-a .h5, .page-section.swirls-a .h6, .page-section.swirls-b h1, .page-section.swirls-b h2, .page-section.swirls-b h3, .page-section.swirls-b h4, .page-section.swirls-b h5, .page-section.swirls-b h6, .page-section.swirls-b .h1, .page-section.swirls-b .h2, .page-section.swirls-b .h3, .page-section.swirls-b .h4, .page-section.swirls-b .h5, .page-section.swirls-b .h6, .page-section.page-intro h1, .page-section.page-intro h2, .page-section.page-intro h3, .page-section.page-intro h4, .page-section.page-intro h5, .page-section.page-intro h6, .page-section.page-intro .h1, .page-section.page-intro .h2, .page-section.page-intro .h3, .page-section.page-intro .h4, .page-section.page-intro .h5, .page-section.page-intro .h6, .page-section.events h1, .page-section.events h2, .page-section.events h3, .page-section.events h4, .page-section.events h5, .page-section.events h6, .page-section.events .h1, .page-section.events .h2, .page-section.events .h3, .page-section.events .h4, .page-section.events .h5, .page-section.events .h6 {
+  color: #ffffff;
+}
+.page-section.page-intro {
   padding-top: 3em;
 }
 .page-section.page-intro p {
@@ -183,15 +182,74 @@ h2.to-the-test::after {
   padding-top: 6rem;
 }
 .page-section.swirls-a {
-  background-image: url("/drupal/sites/default/files/inline-images/swirls-a.png");
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/swirls-a.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
-  color: #ffffff;
+}
+.page-section.swirls-b {
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/swirls-b.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}
+.page-section.circles-stars {
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/circles-stars-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 .page-section.explore-intro {
-  background-image: url("/drupal/sites/default/files/inline-images/explore-intro-bg.jpg");
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/explore-intro-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
+}
+.page-section.events {
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/events-swirls.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}
+.page-section .white-box {
+  color: #3E3E3E;
+  line-height: 1.5em;
+}
+.page-section .white-box h1, .page-section .white-box h2, .page-section .white-box h3, .page-section .white-box h4, .page-section .white-box h5, .page-section .white-box h6, .page-section .white-box .h1, .page-section .white-box .h2, .page-section .white-box .h3, .page-section .white-box .h4, .page-section .white-box .h5, .page-section .white-box .h6 {
+  color: #005289;
+}
+.page-section h2.to-the-test {
+  color: #CBDB2F;
+  margin-top: 2em;
+  position: relative;
+}
+.page-section h2.to-the-test::after {
+  content: "";
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/to-the-test-arrow.png");
+  position: absolute;
+  top: -4.5em;
+  left: 2em;
+  display: block;
+  width: 6em;
+  height: 5em;
+  background-size: 6em auto;
+  background-repeat: no-repeat;
+}
+.page-section h2.see-for-yourself {
+  text-align: right;
+  color: #CBDB2F !important;
+  margin-right: 3rem;
+  position: relative;
+}
+.page-section h2.see-for-yourself::before {
+  content: "";
+  background-image: url("https://share.camsys.com/img/betterbus/inline-images/see-for-yourself-arrow_0.png");
+  position: absolute;
+  top: -6.5em;
+  left: -11em;
+  display: block;
+  width: 11em;
+  height: 8em;
+  background-size: 11em auto;
+  background-repeat: no-repeat;
 }
