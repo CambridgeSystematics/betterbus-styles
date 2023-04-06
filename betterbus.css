@@ -50,7 +50,7 @@ h2, .h2 {
   top: 0;
 }
 .wp-block-button__link::after, .button::after {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/button-arrow.png");
+  background-image: url("https://share.camsys.com/img/betterbus/button-arrow.png");
   background-size: 1.5em auto;
   background-position: center center;
   background-repeat: no-repeat;
@@ -68,7 +68,7 @@ h2, .h2 {
   border: 2px solid #1CA6DF;
 }
 .wp-block-button__link:hover::after, .button:hover::after {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/button-arrow-hov.png");
+  background-image: url("https://share.camsys.com/img/betterbus/button-arrow-hov.png");
 }
 .wp-block-button__link:hover:before, .button:hover:before {
   background: #ffffff;
@@ -87,7 +87,7 @@ h2, .h2 {
   top: 3em;
   left: 0;
   width: 16rem;
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/navbg.png");
+  background-image: url("https://share.camsys.com/img/betterbus/navbg.png");
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: top right;
@@ -182,31 +182,31 @@ h2, .h2 {
   padding-top: 6rem;
 }
 .page-section.swirls-a {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/swirls-a.png");
+  background-image: url("https://share.camsys.com/img/betterbus/swirls-a.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
 }
 .page-section.swirls-b {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/swirls-b.png");
+  background-image: url("https://share.camsys.com/img/betterbus/swirls-b.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
 }
 .page-section.circles-stars {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/circles-stars-bg.png");
+  background-image: url("https://share.camsys.com/img/betterbus/circles-stars-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
 }
 .page-section.explore-intro {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/explore-intro-bg.jpg");
+  background-image: url("https://share.camsys.com/img/betterbus/explore-intro-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
 }
 .page-section.events {
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/events-swirls.png");
+  background-image: url("https://share.camsys.com/img/betterbus/events-swirls.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
@@ -225,7 +225,7 @@ h2, .h2 {
 }
 .page-section h2.to-the-test::after {
   content: "";
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/to-the-test-arrow.png");
+  background-image: url("https://share.camsys.com/img/betterbus/to-the-test-arrow.png");
   position: absolute;
   top: -4.5em;
   left: 2em;
@@ -243,7 +243,7 @@ h2, .h2 {
 }
 .page-section h2.see-for-yourself::before {
   content: "";
-  background-image: url("https://share.camsys.com/img/betterbus/inline-images/see-for-yourself-arrow_0.png");
+  background-image: url("https://share.camsys.com/img/betterbus/see-for-yourself-arrow_0.png");
   position: absolute;
   top: -6.5em;
   left: -11em;
