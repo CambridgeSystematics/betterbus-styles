@@ -6,26 +6,101 @@ body
   color: $black
   +lato-regular
   line-height: 1.3
+  min-height: 100vh
+  &.path-frontpage
+    background-image: url('/themes/betterbus/images/home-bg.png')
+    background-size: 100% auto
+    background-repeat: no-repeat
+    background-color: #144378
+    background-position: bottom center
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
-  +caveat-brush
-  line-height: .875
   margin: 0 0 .5em 0
   color: $dark-blue
+
+h1,h2,.h1,.h2
+  +caveat-brush
+  line-height: .875
 
 h1, .h1
   font-size: 3.75em
 
 h2, .h2
   font-size: 3.125em
-// shared styles
+
+h3, .h3
+  font-size: 1.75em
+
+a, a:visited
+  color: $dark-blue
+  text-decoration: none
+  &:hover, &:focus
+    color: $dark-blue
+    text-decoration: underline
+  &.download-link
+    text-decoration: underline
+    font-size: .875em
+    display: inline-block
+    &::after
+      content:''
+      width: 1em
+      height: 1em
+      margin-left: .25em
+      background-image: url('/themes/betterbus/images/icon-download-blue.png')
+      display: inline-block
+      background-size: .75em auto
+      background-position: center bottom
+      background-repeat: no-repeat
+      position: relative
+      top: 0
+      transition: top .25s ease-in-out
+      .k-o &
+        background-image: url('/themes/betterbus/images/icon-download-white.png')
+    &:hover, &:focus
+      text-decoration: none 
+      &::after
+        top: .125em
+
+table
+  font-size: 1em
+
+  // shared styles
 
 .white-box
   background-color: $white
   border-radius: 2.5rem
-  padding: $content-space!important
+  padding: $content-space
+  box-shadow: 3px 6px 75px rgba(0, 0, 0, 0.13)
+  &.content-image
+    padding: 0
 
-.wp-block-button__link, .button
+.has-watermark
+  position: relative
+  padding: 15%
+  img
+    position: relative
+    z-index: 1
+  &::after
+    content: ""
+    position: absolute
+    width: 120%
+    height: 120%
+    background-image: url(/themes/betterbus/images/circle-watermark.png)
+    background-size: auto 100%
+    background-repeat: no-repeat
+    background-position: center
+    top: -10%
+    left: -10%
+    z-index: 0
+  &.large-watermark
+    padding: 0
+    &::after
+      width: 180%
+      height: 180%
+      top: -40%
+      left: -40%
+
+.wp-block-button__link, .button, .wp-block-button__link:visited, .button:visited
   text-transform: uppercase
   font-size: 1em
   background-color: $white
@@ -37,6 +112,8 @@ h2, .h2
   border: 2px solid $dark-blue
   border-radius: 3em
   overflow: hidden
+  text-decoration: none
+  display: inline-block
   &::after, &::before
     content: ""
     position: absolute
@@ -45,7 +122,7 @@ h2, .h2
     right: 0
     top: 0
   &::after
-    background-image: url('https://share.camsys.com/img/betterbus/button-arrow.png')
+    background-image: url('/themes/betterbus/images/button-arrow.png')
     background-size: 1.5em auto
     background-position: center center
     background-repeat: no-repeat
@@ -57,13 +134,33 @@ h2, .h2
     color: $white
     background: $blue-gradient
     border: 2px solid $bright-blue
+    text-decoration: none
     &::after
-      background-image: url('https://share.camsys.com/img/betterbus/button-arrow-hov.png')
+      background-image: url('/themes/betterbus/images/button-arrow-hov.png')
     &:before
       background: $white
     
-
+.rounded
+  border-radius: 2.5rem!important
+  overflow: hidden
     
+.node__content
+  font-size: 1em
+
+.sparkles
+  position: relative
+  &::after
+    content: ''
+    width: 3em
+    height: 3em
+    background-image: url('/themes/betterbus/images/sparkles.png')
+    background-size: auto 100%
+    background-position: center
+    display: inline-block
+    background-repeat: no-repeat
+    position: absolute
+    left: -3.5em
+    top: -0.5em
 
 // layout
 .container
@@ -77,25 +174,44 @@ h2, .h2
   top: $top-space
   left: 0
   width: $sidebar-width
-  background-image: url('https://share.camsys.com/img/betterbus/navbg.png')
-  background-repeat: no-repeat
-  background-size: auto 100%
-  background-position: top right
-  padding: 1em 2em
+  padding: 0
+  .section
+    background-image: url('/themes/betterbus/images/navbg.png')
+    background-repeat: no-repeat
+    background-size: auto 100%
+    background-position: top right
+    padding: 1em 2em
+    position: relative
+    z-index: 1
+  &::before
+    content: ''
+    position: absolute
+    top: -3rem
+    left: 0
+    right: -3rem
+    bottom: -3rem
+    background: url(/themes/betterbus/images/navbg-shadow.png)
+    background-position: top right
+    background-size: cover
+    z-index: 0
+    opacity: .25
   .block
     background: transparent
     margin: 0
     padding: 0
     border: none
-  #block-logohomelink
-    width: 8em
+  #block-betterbus-logohomelink
+    width: $bb-logo-width
     padding-bottom: 1em
     img
+      max-width: 100%
       filter: drop-shadow(3px 4px 38px rgba(0, 0, 0, 0.25))
   nav
     .nav
       margin: 0
       text-shadow: 3px 4px 38px rgba(0, 0, 0, 0.25)
+    .nav-item:first-child
+      display: none
     .nav-item:not(:last-child)
       margin-bottom: 1em
     .nav-link
@@ -110,14 +226,15 @@ h2, .h2
   width: 100%
   margin: 0
   padding: 0
-
 .page-section
   padding: $content-space
   padding-left: $sidebar-width + $content-space + $content-space
   overflow: hidden
   >*
-    max-width: 66em
-  p
+    max-width: $content-max-width
+  .space-after
+    margin-bottom: $content-space
+  p, ul
     font-size: 1.5em
     line-height: 1.3em
     &:last-child
@@ -130,49 +247,309 @@ h2, .h2
       +lato-regular-italic
       font-size: .75em
       line-height: 1.1
-  &.swirls-a, &.swirls-b, &.page-intro, &.events
+  .wp-block-image
+    &.content-image
+      text-align: center
+      img
+        width: 18em
+        height: auto
+        max-width: 100%
+        margin: 0 auto
+      &.smaller
+        img
+          width: 14em
+  .explore_equity-improvements
+    img
+      width: 20em
+      height: auto
+      max-width: 100%
+    figure
+      &:first-child
+        position: relative
+        z-index: 2
+        img
+          transform: rotate(-.99deg) 
+      &:last-child
+        position: relative
+        top: -$content-space
+        text-align: right
+        z-index: 1
+        img
+          transform: rotate(3.33deg)
+  .green-squiggle
+    position: relative
+    overflow: visible
+    >*
+      position: relative
+      z-index: 1
+    &::after
+      content: ''
+      background-image: url(/themes/betterbus/images/green-squiggle.png)
+      width: 100vw
+      height: 24em
+      position: absolute
+      top: 50%
+      left: -#{$sidebar-width + $content-space + $content-space}
+      right: 0
+      background-size: auto 100%
+      z-index: 0
+      transform: translateY(-50%)
+  .numbered-sub-sections
+    counter-reset: line-number
+    >*
+      counter-increment: line-number
+      position: relative
+      padding-left: 6rem
+      &::before
+        content: counter(line-number)
+        +caveat-brush
+        font-size: 6rem
+        color: #005289
+        position: absolute
+        width: 8rem
+        height: 8rem
+        left: -4rem
+        top: 50%
+        text-align: center
+        line-height: 8rem
+        background-image: url(/themes/betterbus/images/numbered-number-bg.png)
+        background-size: 100% auto
+        background-position: center center
+        transform: translateY(-50%)
+  .bonus-sub-section
+    position: relative
+    padding-left: 6rem
+    &::before
+      content: ''
+      position: absolute
+      width: 8rem
+      height: 8rem
+      left: -4rem
+      top: 0
+      background-image: url(/themes/betterbus/images/bonus.png)
+      background-size: 100% auto
+      background-position: center center
+  &.k-o
     color: $white
     h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
       color: $white
+    a:not(.button):not(.wp-block-button__link)
+      color: $white
+      &:visited
+        color: $white
+  &.has-bg
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: bottom center  
   &.page-intro
     padding-top: $top-space
     p
-      font-size: 1.625em
+      font-size: 1.75em
       line-height: 1.2
-    &.intro-style-a
-      padding-bottom: 0
-      overflow: visible
-      .white-box
-        position: relative
-        top: $content-space
-        max-width: 44em
-      & + .page-section
-        padding-top: $content-space*2
+      max-width: 44rem
+    .wp-block-embed, .embed-wrap
+      max-width: 44rem
+      box-shadow: 3px 6px 75px rgba(0, 0, 0, 0.13)
+      margin: $content-space 0
+  &.intro-style-a
+    padding-bottom: 0
+    overflow: visible
+    .white-box
+      position: relative
+      top: $content-space
+      display: inline-block
+    & + .page-section
+      padding-top: $content-space*2
+  &.intro-style-b
+    position: relative
+    &::after
+      content: ''
+      height: 100%
+      position: absolute
+      top: 0
+      left: $sidebar-width + $content-space + $content-space + 44rem
+      right: 0
+      background: url('/themes/betterbus/images/intro-b-squiggle.png')
+      background-size: auto 80%
+      background-repeat: no-repeat
   &.swirls-a
-    background-image: url('https://share.camsys.com/img/betterbus/swirls-a.png')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: bottom center
+    background-image: url('/themes/betterbus/images/swirls-a.png')
   &.swirls-b
-    background-image: url('https://share.camsys.com/img/betterbus/swirls-b.png')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: bottom center
+    background-image: url('/themes/betterbus/images/swirls-b.png')
+  &.long-swirls
+    background-image: url('/themes/betterbus/images/long-swirls-bg.png')
+    background-size: 100% auto
+    background-repeat: repeat-y
+    background-position: top center
   &.circles-stars
-    background-image: url('https://share.camsys.com/img/betterbus/circles-stars-bg.png')
-    background-repeat: no-repeat
-    background-size: cover
+    background-image: url('/themes/betterbus/images/circles-stars-bg.png')
     background-position: top center
   &.explore-intro
-    background-image: url('https://share.camsys.com/img/betterbus/explore-intro-bg.jpg')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: bottom center
+    background-image: url('/themes/betterbus/images/explore-intro-bg.jpg')
+  &.share-intro
+    background-image: url('/themes/betterbus/images/share-intro-bg.jpg')
+  &.map-intro
+    background-image: url('/themes/betterbus/images/map-intro-bg.jpg')
+  &.events-intro
+    background-image: url('/themes/betterbus/images/events-intro-bg.jpg')
+  &.light-blue-bg
+    background-color: $light-blue
+  &.dark-blue-bg
+    background-color: $dark-blue
+  &.top-swirl-sparkles
+    position: relative
+    &::after
+      content: ''
+      height: 100%
+      position: absolute
+      top: 0
+      right: 0
+      background: url('/themes/betterbus/images/top-right-squiggle-sparkle.png')
+      background-size: auto 80%
+      background-repeat: no-repeat
+    &::before
+      content: ''
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      background: url('/themes/betterbus/images/top-left-squiggle-sparkle.png')
+      background-size: auto 80%
+      background-repeat: no-repeat
   &.events
-    background-image: url('https://share.camsys.com/img/betterbus/events-swirls.png')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: bottom center
+    background-image: url('/themes/betterbus/images/events-swirls.png')
+  .events-list
+    .content
+      position: relative
+      margin-top: $content-space
+    .white-box
+      padding: $content-space/2
+    .more-link
+      position: absolute
+      top: -3rem - $content-space
+      right: 0
+      a
+        @extend .button
+    p
+      font-size: .75em
+      &:not(:last-child)
+        margin-bottom: .5em
+    h3
+      font-size: 1em
+      line-height: 1.3
+    .views-field
+      &:not(:last-child)
+        margin-bottom: .75em
+    &.events-only
+      >h2, .more-link
+        display: none
+      & + *
+        margin-top: $content-space*2
+    .wp-block-columns
+      flex-wrap: wrap
+      margin: 0 -1rem
+      .wp-block-column
+        flex-basis: auto
+        flex-grow: 1
+        margin: 1rem
+        flex-basis: 12em
+        max-width: 16em
+  &.home-content
+    min-height: 60vw
+    padding: $content-space #{$bb-logo-width + $content-space}
+    margin: 0 auto
+    >*
+      margin-left: auto
+      margin-right: auto
+    h1
+      text-align: center
+    .wp-block-buttons
+      justify-content: center
+    .video-wrap
+      position: relative
+    .side-logos
+      position: absolute
+      top: 0
+      right: -#{$bb-logo-width + $content-space/2}
+      width: $bb-logo-width
+      text-align: center
+      a
+        display: inline-block
+        &:not(:first-child)
+          margin-top: 1em
+        &.wmata-link
+          width: $bb-logo-width/2
+      img
+        max-width: 100%
+  &.map-tables
+    .tables
+      *
+        margin: 0
+        padding: 0
+      .header-table
+        table
+          tr, thead
+            border: none
+          tr
+            th,td
+              background-color: $lime-green
+              color: $black
+              border: none
+              &:first-child
+                border-top-left-radius: 4px
+              &:last-child
+                border-top-right-radius: 4px
+      .table-header
+        background-color: $bright-blue
+        color: $white
+        font-size: 1.25em
+        +lato-bold
+        text-transform: uppercase
+        +table-cell-pad
+        position: relative
+        border-bottom: 1px solid $dark-blue
+        &.table-toggle
+          &:hover
+            cursor: pointer
+          &::after
+            content:''
+            width: 1em
+            height: 1em
+            margin-left: .25em
+            background-image: url('/themes/betterbus/images/icon-caret-white.png')
+            display: inline-block
+            background-size: .75em auto
+            background-position: center center
+            background-repeat: no-repeat
+            position: absolute
+            right: .75rem
+            top: 50%
+            transform: translateY(-50%)
+            transition: transform .25s ease-in-out
+          &.closed
+            &::after
+              transform: translateY(-50%) rotate(180deg)
+      table
+        background: $blue-gradient
+      tbody
+      tr
+        position: relative
+        &.new-section
+          border-top: .5em solid $bright-blue
+      th, td
+        +table-cell-pad
+        font-size: 1.5em
+        border: none
+        background-color: $white
+        color: $black
+        a, a:visited
+          color: $dark-blue!important
+          text-decoration: underline
+          &:hover
+            text-decoration: none
+      td
+        border-bottom: 1px solid transparent
+
   .white-box
     p
     color: $black
@@ -180,13 +557,13 @@ h2, .h2
     h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
       color: $dark-blue
   h2
-    &.to-the-test
+    &.explore_to-the-test
       color: $lime-green
       margin-top: 2em
       position: relative
       &::after
         content: ''
-        background-image: url('https://share.camsys.com/img/betterbus/to-the-test-arrow.png')
+        background-image: url('/themes/betterbus/images/to-the-test-arrow.png')
         position: absolute
         top: -4.5em
         left: 2em
@@ -195,20 +572,115 @@ h2, .h2
         height: 5em
         background-size: 6em auto
         background-repeat: no-repeat
-    &.see-for-yourself
+    &.explore_see-for-yourself
       text-align: right
       color: $lime-green!important
       margin-right: $content-space
       position: relative
       &::before
         content: ''
-        background-image: url('https://share.camsys.com/img/betterbus/see-for-yourself-arrow_0.png')
+        background-image: url('/themes/betterbus/images/see-for-yourself-arrow.png')
         position: absolute
         top: -6.5em
-        left: -11em
+        left: -10em
         display: block
         width: 11em
         height: 8em
         background-size: 11em auto
         background-repeat: no-repeat
 
+  
+.site-footer
+  padding: 0
+  margin: 0
+  background: $blue-gradient-reverse
+  border-top: 3px solid $lime-green
+  .content
+    font-size: 1em
+    .button
+      color: $dark-blue
+  
+  .site-footer__top, .site-footer__bottom
+    letter-spacing: inherit
+    margin: 0
+    border: none
+    padding: $content-space/2 $content-space/4
+    .block
+      margin: 0
+      padding: 0
+      border: none
+    .region
+      margin: 0
+      >.block
+        width: 100%
+  .site-footer__top
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-between
+    .row
+      float: none
+      width: auto
+      padding: 0
+      margin: 0
+      flex-grow: 1
+    nav
+      width: auto
+    .navbar-nav
+      flex-direction: row
+      padding: 0
+      >.nav-item
+        >a
+          font-size: 1.125em
+        &:not(:last-child)
+          margin-right: $content-space
+      a
+        display: inline-block
+        border: none
+        padding: .5rem
+        color: $white
+        &:hover
+          text-decoration: underline
+          background: transparent
+      .sub-menu
+        margin: 0
+        padding: 0
+        a
+          padding: .25rem .5rem
+  .footer-secondary-menu
+    display: flex
+    align-items: flex-end
+    flex-direction: column
+    .button
+      white-space: nowrap
+    .menu-row
+      display: flex
+      flex-wrap: nowrap
+      align-items: center
+      >*
+        margin-left: 1em
+      &:not(:last-child)
+        margin-bottom: $content-space/2
+    .metro-logo
+      height: 3em
+      width: auto
+  #google-translate-wrap
+    .placeholder
+      display: none
+    .goog-te-gadget
+      color: $white
+  // #block-footermenu
+  //   display: flex
+  //   align-items: center
+  //   .nav
+  //     display: inline-flex
+  //     width: 100%
+  //     align-items: center
+  //     justify-content: space-between
+  //     >*
+  //       flex-grow: 1
+  //       text-align: center
+  //   .nav-link
+  //     font-size: 1.25em
+  //     color: $white
+  //     &:hover &:focus
+  //       text-decoration: none
