@@ -40,7 +40,7 @@ h1, .h1 {
 }
 @media screen and (max-width: 699px) {
   h1, .h1 {
-    font-size: 2em;
+    font-size: 2.5em;
   }
 }
 
@@ -54,7 +54,7 @@ h2, .h2 {
 }
 @media screen and (max-width: 699px) {
   h2, .h2 {
-    font-size: 1.75em;
+    font-size: 2em;
   }
 }
 
@@ -155,6 +155,27 @@ table {
   top: -40%;
   left: -40%;
 }
+@media screen and (max-width: 699px) {
+  .has-watermark {
+    margin-bottom: 3rem;
+    top: -3rem;
+  }
+  .has-watermark::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .has-watermark.large-watermark {
+    padding: 0;
+  }
+  .has-watermark.large-watermark::after {
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+  }
+}
 
 .wp-block-button__link, .button, .page-section .events-list .more-link a, .wp-block-button__link:visited, .button:visited {
   text-transform: uppercase;
@@ -205,9 +226,10 @@ table {
 .wp-block-button__link:hover:before, .button:hover:before, .page-section .events-list .more-link a:hover:before, .wp-block-button__link:visited:hover:before, .button:visited:hover:before {
   background: #ffffff;
 }
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 699px) {
   .wp-block-button__link, .button, .page-section .events-list .more-link a, .wp-block-button__link:visited, .button:visited {
-    font-size: 0.75em;
+    font-size: 1.125em;
+    margin-top: 1em;
   }
 }
 
@@ -474,6 +496,10 @@ table {
   font-size: 0.75em;
   line-height: 1.1;
 }
+.page-section .wp-block-columns.dont-stack {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
 @media screen and (max-width: 999px) {
   .page-section .wp-block-columns:not(.dont-stack) {
     -webkit-box-orient: vertical;
@@ -576,6 +602,11 @@ table {
   background-position: center center;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+@media screen and (max-width: 699px) {
+  .page-section .numbered-sub-sections .wp-block-image {
+    text-align: left;
+  }
 }
 .page-section .bonus-sub-section {
   position: relative;
@@ -990,6 +1021,14 @@ table {
   }
   .page-section h2.explore_see-for-yourself::before {
     left: -12em;
+  }
+}
+@media screen and (max-width: 699px) {
+  .page-section h2.explore_see-for-yourself {
+    text-align: left;
+  }
+  .page-section h2.explore_see-for-yourself::before {
+    left: -11.5em;
   }
 }
 
