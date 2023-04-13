@@ -7,12 +7,15 @@ body
   +lato-regular
   line-height: 1.3
   min-height: 100vh
+  font-size: 16px
   &.path-frontpage
     background-image: url('/themes/betterbus/images/home-bg.png')
     background-size: 100% auto
     background-repeat: no-repeat
     background-color: #144378
     background-position: bottom center
+  +mq-max(800px)
+    font-size: 12px
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
   margin: 0 0 .5em 0
@@ -24,12 +27,24 @@ h1,h2,.h1,.h2
 
 h1, .h1
   font-size: 3.75em
+  +mq-max(1100px)
+    font-size: 3em
+  +mq-max(700px)
+    font-size: 2em
 
 h2, .h2
   font-size: 3.125em
+  +mq-max(1100px)
+    font-size: 2.5em
+  +mq-max(700px)
+    font-size: 1.75em
 
 h3, .h3
   font-size: 1.75em
+  +mq-max(1100px)
+    font-size: 1.5em
+  +mq-max(700px)
+    font-size: 1.25em
 
 a, a:visited
   color: $dark-blue
@@ -118,7 +133,7 @@ table
     content: ""
     position: absolute
     width: 3em
-    height: 3em
+    height: 100%
     right: 0
     top: 0
   &::after
@@ -127,8 +142,8 @@ table
     background-position: center center
     background-repeat: no-repeat
   &::before
-    border-top-left-radius: 50%
-    border-bottom-left-radius: 50%
+    border-top-left-radius: 1.5em
+    border-bottom-left-radius: 1.5em
     background: $blue-gradient
   &:hover
     color: $white
@@ -139,6 +154,8 @@ table
       background-image: url('/themes/betterbus/images/button-arrow-hov.png')
     &:before
       background: $white
+  +mq-max(500px)
+    font-size: .75em
     
 .rounded
   border-radius: 2.5rem!important
@@ -146,6 +163,8 @@ table
     
 .node__content
   font-size: 1em
+  margin: 0
+  padding: 0
 
 .sparkles
   position: relative
@@ -183,24 +202,12 @@ table
     padding: 1em 2em
     position: relative
     z-index: 1
-  &::before
-    content: ''
-    position: absolute
-    top: -3rem
-    left: 0
-    right: -3rem
-    bottom: -3rem
-    background: url(/themes/betterbus/images/navbg-shadow.png)
-    background-position: top right
-    background-size: cover
-    z-index: 0
-    opacity: .25
   .block
     background: transparent
     margin: 0
     padding: 0
     border: none
-  #block-betterbus-logohomelink
+  #block-betterbus-logohomelink, #block-navheader
     width: $bb-logo-width
     padding-bottom: 1em
     img
@@ -220,16 +227,124 @@ table
       &.active
         color: $white
         font-weight: 700
-
+  #menu-toggle
+    position: absolute
+    top: .5rem
+    right: .5rem
+    background-color: transparent
+    border: none
+    width: 3rem
+    height: 3rem
+    text-align: center
+    .icon-menu, .icon-close
+      display: inline-block
+      vertical-align: 3rem
+    .icon-close
+      display: none
+    &.open
+      .icon-close
+        display: inline-block
+      .icon-menu
+        display: none
+  +mq-min($nav-switch)
+    //bigger than mobile
+    #menu-toggle
+      display: none
+    &::before
+      content: ''
+      position: absolute
+      top: -3rem
+      left: 0
+      right: -3rem
+      bottom: -3rem
+      background: url(/themes/betterbus/images/navbg-shadow.png)
+      background-position: top right
+      background-size: cover
+      z-index: 0
+      opacity: .25
+    #block-betterbus-main-menu
+      display: block!important
+  +mq-max(1100px)
+    width: $sidebar-width*.75
+    font-size: .875em
+  +mq-max($nav-switch)
+    // mobile
+    height: $mobile-nav-height
+    width: 100%
+    top: 0
+    z-index: 100
+    nav .nav
+      margin: 0 0 1em 0
+    .navbar-nav
+      font-size: 1.75em
+      li
+        margin: 0
+      a
+        text-align: center
+    .section
+      position: relative
+      background-image: none
+      padding: 0
+      >*
+        position: relative
+        z-index: 3
+      &::before
+        content: ''
+        position: absolute
+        top: -3rem
+        left: 0
+        right: -3rem
+        bottom: -3rem
+        background: url(/themes/betterbus/images/mobile-nav-bg-shadow.png)
+        background-position: bottom center
+        background-size: 100% auto
+        z-index: 0
+        opacity: .25
+      &::after
+        content: ''
+        z-index: 1
+        background-image: url('/themes/betterbus/images/mobile-nav-bg.png')
+        padding: 0 0 1em 0
+        background-size: 100% auto
+        background-position: bottom center
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: -1em
+        width: 100%
+    #block-navheader
+      height: $mobile-nav-height
+      width: 100%
+      .bb-logo
+        width: $mobile-nav-height - 1rem
+        margin: .5rem
+    #block-betterbus-main-menu
+      display: none
+      position: relative
+      z-index: 100
+      padding: 1rem
+    
 
 #content
   width: 100%
   margin: 0
   padding: 0
+
 .page-section
   padding: $content-space
   padding-left: $sidebar-width + $content-space + $content-space
   overflow: hidden
+  +mq-max(1300px)
+    padding-left: $sidebar-width + $content-space
+  +mq-max(1100px)
+    padding-left: $sidebar-width*.75 + $content-space
+  +mq-max($nav-switch)
+    padding-left: $content-space
+    &:first-child
+      padding-top: $mobile-nav-height + $content-space!important
+      .path-frontpage &
+        padding-top: 0
   >*
     max-width: $content-max-width
   .space-after
@@ -247,6 +362,13 @@ table
       +lato-regular-italic
       font-size: .75em
       line-height: 1.1
+  .wp-block-columns
+    +mq-max($columns-stack)
+      &:not(.dont-stack)
+        flex-direction: column
+        >.wp-block-column
+          margin-left: 0
+          margin-bottom: $content-space
   .wp-block-image
     &.content-image
       text-align: center
@@ -258,6 +380,12 @@ table
       &.smaller
         img
           width: 14em
+      +mq-max($columns-stack)
+        img
+          width: 12em
+        &.smaller
+          img
+            width: 8em
   .explore_equity-improvements
     img
       width: 20em
@@ -358,6 +486,7 @@ table
       position: relative
       top: $content-space
       display: inline-block
+      z-index: 2
     & + .page-section
       padding-top: $content-space*2
   &.intro-style-b
@@ -398,24 +527,33 @@ table
     background-color: $dark-blue
   &.top-swirl-sparkles
     position: relative
+    >*
+      position: relative
+      z-index: 1
     &::after
       content: ''
-      height: 100%
+      height: 20em
+      width: 35em
       position: absolute
       top: 0
       right: 0
       background: url('/themes/betterbus/images/top-right-squiggle-sparkle.png')
-      background-size: auto 80%
+      background-size: auto 100%
       background-repeat: no-repeat
+      background-position: top right
+      z-index: 0
     &::before
       content: ''
-      height: 100%
+      height: 20em
+      width: $sidebar-width
       position: absolute
       top: 0
       left: 0
-      background: url('/themes/betterbus/images/top-left-squiggle-sparkle.png')
-      background-size: auto 80%
+      background: url(/themes/betterbus/images/top-left-squiggle-sparkle.png)
+      background-size: auto 100%
       background-repeat: no-repeat
+      background-position: top right
+      z-index: 0
   &.events
     background-image: url('/themes/betterbus/images/events-swirls.png')
   .events-list
@@ -430,6 +568,9 @@ table
       right: 0
       a
         @extend .button
+        color: $dark-blue!important
+        &:hover
+          color: $white!important
     p
       font-size: .75em
       &:not(:last-child)
@@ -453,7 +594,11 @@ table
         flex-grow: 1
         margin: 1rem
         flex-basis: 12em
-        max-width: 16em
+        max-width: 33%
+        max-width: calc(33% - 2rem)
+        min-width: 10em
+        +mq-max($columns-stack)
+          max-width: 100%
   &.home-content
     min-height: 60vw
     padding: $content-space #{$bb-logo-width + $content-space}
@@ -481,6 +626,23 @@ table
           width: $bb-logo-width/2
       img
         max-width: 100%
+    +mq-max(900px)
+      padding-left: $content-space
+      padding-right: #{$bb-logo-width/2 + $content-space}
+      min-height: auto
+      .side-logos
+        width: $bb-logo-width/2
+        right: -#{$bb-logo-width/2 + $content-space/2}
+        img
+          width: $bb-logo-width/2
+    +mq-max(500px)
+      padding: $content-space/2
+      padding-right: $content-space/2
+      padding-left: $content-space/2
+      .side-logos
+        position: static
+        width: 100%
+        text-align: center
   &.map-tables
     .tables
       *
@@ -549,13 +711,16 @@ table
             text-decoration: none
       td
         border-bottom: 1px solid transparent
-
   .white-box
     p
     color: $black
     line-height: 1.5em
     h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
       color: $dark-blue
+    a:not(.wp-block-button__link), a:not(.button)
+      color: $dark-blue!important
+      &:visited, &:link, &:hover
+        color: $dark-blue!important
   h2
     &.explore_to-the-test
       color: $lime-green
@@ -572,6 +737,10 @@ table
         height: 5em
         background-size: 6em auto
         background-repeat: no-repeat
+      +mq-max($columns-stack)
+        margin-top: 1em
+        &::after
+          display: none
     &.explore_see-for-yourself
       text-align: right
       color: $lime-green!important
@@ -582,19 +751,24 @@ table
         background-image: url('/themes/betterbus/images/see-for-yourself-arrow.png')
         position: absolute
         top: -6.5em
-        left: -10em
+        left: -11em
         display: block
         width: 11em
         height: 8em
         background-size: 11em auto
         background-repeat: no-repeat
-
+      +mq-max($columns-stack)
+        text-align: left
+        &::before
+          left: -12em
   
 .site-footer
   padding: 0
   margin: 0
   background: $blue-gradient-reverse
   border-top: 3px solid $lime-green
+  .site-footer__top .content li a
+    text-indent: 0
   .content
     font-size: 1em
     .button
@@ -668,19 +842,48 @@ table
       display: none
     .goog-te-gadget
       color: $white
-  // #block-footermenu
-  //   display: flex
-  //   align-items: center
-  //   .nav
-  //     display: inline-flex
-  //     width: 100%
-  //     align-items: center
-  //     justify-content: space-between
-  //     >*
-  //       flex-grow: 1
-  //       text-align: center
-  //   .nav-link
-  //     font-size: 1.25em
-  //     color: $white
-  //     &:hover &:focus
-  //       text-decoration: none
+  +mq-max(1400px)
+    .site-footer__top, .site-footer__bottom
+      padding: $content-space/2 0
+    .site-footer__top
+      flex-direction: column
+      .navbar-nav
+        justify-content: space-between
+        padding: 0
+        .nav-item:not(:last-child)
+          margin-right: 1em
+    .footer-secondary-menu
+      flex-direction: row
+      justify-content: space-between
+      .menu-row
+        margin-top: $content-space/2
+        &:not(:last-child)
+          margin-bottom: 0
+  +mq-max(1100px)
+    .site-footer__top
+      .navbar-nav
+        font-size: .875rem
+  +mq-max(900px)
+    .site-footer__top
+      flex-direction: row
+    .footer-secondary-menu
+      justify-content: flex-end
+      flex-direction: column
+    .site-footer__top
+      .navbar-nav
+        flex-direction: columns
+        .nav-item
+          >a
+            padding-left: 0
+            padding-right: 0
+        li
+          width: 100%
+        >li
+          &:not(:first-child)
+            padding-top: 1em
+          &:not(:last-child)
+            padding-bottom: 1em
+            border-bottom: 1px solid rgba($lime-green, .5)
+  +mq-max(600px)
+    .site-footer__top
+      flex-direction: column

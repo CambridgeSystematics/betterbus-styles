@@ -30,13 +30,42 @@ $light-blue: #F1F5F9
   +lato-bold
   font-style: italic
 
+// MEDIA QUERIES
+
+=mq-min($var)
+  @media screen and (min-width: #{$var})
+    @content
+
+=mq-max($var)
+  @media screen and (max-width: $var - 1px)
+    @content
+
+=mq-minmax($min,$max)
+  @media screen and (max-width: #{$max} - 1px) and (min-width: #{$min})
+    @content
+
+=mq-height-min($var)
+  @media screen and (min-height: #{$var})
+    @content
+
+=mq-height-max($var)
+  @media screen and (max-height: #{$var} - 1px)
+    @content
+
+=mq-ie
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+    @content
+
 // measurements
 
 $content-max-width: 66rem
-$sidebar-width: 17rem
+$sidebar-width: 18rem
 $top-space: 3em
 $content-space: 3rem
 $bb-logo-width: 8rem
+$columns-stack: 1000px
+$nav-switch: 700px
+$mobile-nav-height: 5rem
 
 // misc
 

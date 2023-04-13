@@ -13,9 +13,19 @@
     }
   };
 
-  $('.map-tables .table-toggle').click(function() {
-    $(this).toggleClass('closed');
-    $(this).next('.wp-block-table').slideToggle();
-  })
+  jQuery(document).ready(function($){
+    
+    $('.map-tables .table-toggle').click(function() {
+      $(this).toggleClass('closed');
+      $(this).next('.wp-block-table').slideToggle();
+    })
+  
+    $('#menu-toggle').click(function(){
+      $(this).toggleClass('open');
+      $('#block-betterbus-main-menu').slideToggle();
+    })
+
+  });
+
 
 })(Drupal);
