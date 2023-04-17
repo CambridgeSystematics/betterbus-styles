@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   font-size: 16px;
 }
-body.path-frontpage {
+body.path-frontpage, body.page-node-51 {
   background-image: url("/themes/betterbus/images/home-bg.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -291,11 +291,11 @@ table {
   padding: 0;
   border: none;
 }
-#sidebar_first #block-betterbus-logohomelink, #sidebar_first #block-navheader {
+#sidebar_first #block-betterbus-logohomelink, #sidebar_first #block-navheader, #sidebar_first #block-navheaderspanish {
   width: 8rem;
   padding-bottom: 1em;
 }
-#sidebar_first #block-betterbus-logohomelink img, #sidebar_first #block-navheader img {
+#sidebar_first #block-betterbus-logohomelink img, #sidebar_first #block-navheader img, #sidebar_first #block-navheaderspanish img {
   max-width: 100%;
   -webkit-filter: drop-shadow(3px 4px 38px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(3px 4px 38px rgba(0, 0, 0, 0.25));
@@ -303,6 +303,9 @@ table {
 #sidebar_first nav .nav {
   margin: 0;
   text-shadow: 3px 4px 38px rgba(0, 0, 0, 0.25);
+}
+#sidebar_first nav .nav-item {
+  width: 100%;
 }
 #sidebar_first nav .nav-item:first-child {
   display: none;
@@ -358,7 +361,7 @@ table {
     z-index: 0;
     opacity: 0.25;
   }
-  #sidebar_first #block-betterbus-main-menu {
+  #sidebar_first #block-betterbus-main-menu, #sidebar_first #block-spanishnavigation {
     display: block !important;
   }
 }
@@ -377,14 +380,12 @@ table {
   }
   #sidebar_first nav .nav {
     margin: 0 0 1em 0;
-  }
-  #sidebar_first .navbar-nav {
     font-size: 1.75em;
   }
-  #sidebar_first .navbar-nav li {
+  #sidebar_first nav .nav li {
     margin: 0;
   }
-  #sidebar_first .navbar-nav a {
+  #sidebar_first nav .nav a {
     text-align: center;
   }
   #sidebar_first .section {
@@ -423,15 +424,15 @@ table {
     bottom: -1em;
     width: 100%;
   }
-  #sidebar_first #block-navheader {
+  #sidebar_first #block-navheader, #sidebar_first #block-navheaderspanish {
     height: 5rem;
     width: 100%;
   }
-  #sidebar_first #block-navheader .bb-logo {
+  #sidebar_first #block-navheader .bb-logo, #sidebar_first #block-navheaderspanish .bb-logo {
     width: 4rem;
     margin: 0.5rem;
   }
-  #sidebar_first #block-betterbus-main-menu {
+  #sidebar_first #block-betterbus-main-menu, #sidebar_first #block-spanishnavigation {
     display: none;
     position: relative;
     z-index: 100;
@@ -876,9 +877,46 @@ table {
     text-align: center;
   }
 }
+.page-section.map-tables .table-search {
+  margin-bottom: 3rem;
+  width: 26em;
+  max-width: 100%;
+  position: relative;
+}
+.page-section.map-tables .table-search:after {
+  content: "";
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background-image: url(/themes/betterbus/images/icon-search-bright-blue.png);
+  position: absolute;
+  background-size: 100% auto;
+  right: 1em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.page-section.map-tables #search-map-table {
+  width: 100%;
+  font-size: 1.25em;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5em;
+  border-radius: 4px;
+  border: 2px solid #005289;
+  text-overflow: ellipsis;
+}
+.page-section.map-tables #search-map-table:focus {
+  border-color: #CBDB2F;
+}
 .page-section.map-tables .tables * {
   margin: 0;
   padding: 0;
+}
+.page-section.map-tables .tables table td:first-child, .page-section.map-tables .tables table th:first-child {
+  width: 5em;
+}
+.page-section.map-tables .tables table td:last-child, .page-section.map-tables .tables table th:last-child {
+  width: 12em;
 }
 .page-section.map-tables .tables .header-table table tr, .page-section.map-tables .tables .header-table table thead {
   border: none;
@@ -958,6 +996,11 @@ table {
 }
 .page-section.map-tables .tables td {
   border-bottom: 1px solid transparent;
+}
+@media screen and (max-width: 999px) {
+  .page-section.map-tables .tables table td:last-child, .page-section.map-tables .tables table th:last-child {
+    width: 8em;
+  }
 }
 .page-section .white-box {
   color: #3E3E3E;

@@ -8,7 +8,7 @@ body
   line-height: 1.3
   min-height: 100vh
   font-size: 16px
-  &.path-frontpage
+  &.path-frontpage, &.page-node-51
     background-image: url('/themes/betterbus/images/home-bg.png')
     background-size: 100% auto
     background-repeat: no-repeat
@@ -16,6 +16,8 @@ body
     background-position: bottom center
   +mq-max(800px)
     font-size: 12px
+
+    
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
   margin: 0 0 .5em 0
@@ -223,7 +225,7 @@ table
     margin: 0
     padding: 0
     border: none
-  #block-betterbus-logohomelink, #block-navheader
+  #block-betterbus-logohomelink, #block-navheader, #block-navheaderspanish
     width: $bb-logo-width
     padding-bottom: 1em
     img
@@ -233,6 +235,8 @@ table
     .nav
       margin: 0
       text-shadow: 3px 4px 38px rgba(0, 0, 0, 0.25)
+    .nav-item
+      width: 100%
     .nav-item:first-child
       display: none
     .nav-item:not(:last-child)
@@ -278,7 +282,7 @@ table
       background-size: cover
       z-index: 0
       opacity: .25
-    #block-betterbus-main-menu
+    #block-betterbus-main-menu, #block-spanishnavigation
       display: block!important
   +mq-max(1100px)
     width: $sidebar-width*.75
@@ -291,7 +295,6 @@ table
     z-index: 100
     nav .nav
       margin: 0 0 1em 0
-    .navbar-nav
       font-size: 1.75em
       li
         margin: 0
@@ -329,13 +332,13 @@ table
         right: 0
         bottom: -1em
         width: 100%
-    #block-navheader
+    #block-navheader, , #block-navheaderspanish
       height: $mobile-nav-height
       width: 100%
       .bb-logo
         width: $mobile-nav-height - 1rem
         margin: .5rem
-    #block-betterbus-main-menu
+    #block-betterbus-main-menu, #block-spanishnavigation
       display: none
       position: relative
       z-index: 100
@@ -665,10 +668,42 @@ table
         width: 100%
         text-align: center
   &.map-tables
+    .table-search
+      margin-bottom: $content-space
+      width: 26em
+      max-width: 100%
+      position: relative
+      &:after
+        content: ""
+        display: inline-block
+        width: 1.5em
+        height: 1.5em
+        background-image: url(/themes/betterbus/images/icon-search-bright-blue.png)
+        position: absolute
+        background-size: 100% auto
+        right: 1em
+        top: 50%
+        transform: translateY(-50%)
+    #search-map-table
+      width: 100%
+      font-size: 1.25em
+      +table-cell-pad
+      padding-right: 2.5em
+      border-radius: 4px
+      border: 2px solid  $dark-blue
+      text-overflow: ellipsis
+      &:focus
+        border-color: $lime-green
     .tables
       *
         margin: 0
         padding: 0
+      table
+        td, th
+          &:first-child
+            width: 5em
+          &:last-child
+            width: 12em
       .header-table
         table
           tr, thead
@@ -714,7 +749,6 @@ table
               transform: translateY(-50%) rotate(180deg)
       table
         background: $blue-gradient
-      tbody
       tr
         position: relative
         &.new-section
@@ -732,6 +766,11 @@ table
             text-decoration: none
       td
         border-bottom: 1px solid transparent
+      +mq-max(1000px)
+        table
+          td, th
+            &:last-child
+              width: 8em
   .white-box
     p
     color: $black
