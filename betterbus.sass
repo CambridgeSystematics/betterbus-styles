@@ -31,22 +31,16 @@ h1, .h1
   font-size: 3.75em
   +mq-max(1100px)
     font-size: 3em
-  +mq-max(700px)
-    font-size: 2.5em
 
 h2, .h2
   font-size: 3.125em
   +mq-max(1100px)
     font-size: 2.5em
-  +mq-max(700px)
-    font-size: 2em
 
 h3, .h3
   font-size: 1.75em
   +mq-max(1100px)
-    font-size: 1.5em
-  +mq-max(700px)
-    font-size: 1.25em
+    font-size: 1.625em
 
 a, a:visited
   color: $dark-blue
@@ -90,6 +84,9 @@ table
   box-shadow: 3px 6px 75px rgba(0, 0, 0, 0.13)
   &.content-image
     padding: 0
+  +mq-max($nav-switch)
+    padding: $content-space/2
+    border-radius: 1.25rem!important
 
 .has-watermark
   position: relative
@@ -109,28 +106,20 @@ table
     top: -10%
     left: -10%
     z-index: 0
-  &.large-watermark
-    padding: 0
-    &::after
-      width: 180%
-      height: 180%
-      top: -40%
-      left: -40%
+  +mq-min($columns-stack)
+    &.large-watermark
+      padding: 0
+      &::after
+        width: 180%
+        height: 180%
+        top: -40%
+        left: -40%
   +mq-max($nav-switch)
-    margin-bottom: $content-space
-    top: -$content-space
     &::after
       width: 100%
       height: 100%
       top: 0
       left: 0
-    &.large-watermark
-      padding: 0
-      &::after
-        width: 120%
-        height: 120%
-        top: -10%
-        left: -10%
 
 .wp-block-button__link, .button, .wp-block-button__link:visited, .button:visited
   text-transform: uppercase
@@ -144,7 +133,7 @@ table
   border: 2px solid $dark-blue
   border-radius: 3em
   overflow: hidden
-  text-decoration: none
+  text-decoration: none!important
   display: inline-block
   &::after, &::before
     content: ""
@@ -178,6 +167,8 @@ table
 .rounded
   border-radius: 2.5rem!important
   overflow: hidden
+  +mq-max($nav-switch)
+    border-radius: 1.25rem!important
     
 .node__content
   font-size: 1em
@@ -198,6 +189,16 @@ table
     position: absolute
     left: -3.5em
     top: -0.5em
+
+.medium-stack
+  +mq-max($columns-stack)
+    display: flex
+    flex-wrap: nowrap
+    >p
+      flex-shrink: 2
+    .content-image
+      flex-shrink: 0
+
 
 // layout
 .container
@@ -278,6 +279,7 @@ table
       right: -3rem
       bottom: -3rem
       background: url(/themes/betterbus/images/navbg-shadow.png)
+      background-repeat: no-repeat
       background-position: top right
       background-size: cover
       z-index: 0
@@ -315,6 +317,7 @@ table
         right: -3rem
         bottom: -3rem
         background: url(/themes/betterbus/images/mobile-nav-bg-shadow.png)
+        background-repeat: no-repeat
         background-position: bottom center
         background-size: 100% auto
         z-index: 0
@@ -323,6 +326,7 @@ table
         content: ''
         z-index: 1
         background-image: url('/themes/betterbus/images/mobile-nav-bg.png')
+        background-repeat: no-repeat
         padding: 0 0 1em 0
         background-size: 100% auto
         background-position: bottom center
@@ -364,6 +368,8 @@ table
       padding-top: $mobile-nav-height + $content-space!important
       .path-frontpage &
         padding-top: 0
+  +mq-max(500px)
+    padding: $content-space $content-space/2
   >*
     max-width: $content-max-width
   .space-after
@@ -381,15 +387,6 @@ table
       +lato-regular-italic
       font-size: .75em
       line-height: 1.1
-  .wp-block-columns
-    &.dont-stack
-      flex-wrap: nowrap
-    +mq-max($columns-stack)
-      &:not(.dont-stack)
-        flex-direction: column
-        >.wp-block-column
-          margin-left: 0
-          margin-bottom: $content-space
   .wp-block-image
     &.content-image
       text-align: center
@@ -406,7 +403,58 @@ table
           width: 12em
         &.smaller
           img
-            width: 8em
+            width: 12em
+        &:not(.dont-float)
+          float: right
+          margin-left: .5em
+        &.stack-center, &.stack-left
+          float: none
+          margin: 0
+          text-align: center
+          img
+            max-width: 100%
+            width: 18em
+        &.stack-left
+          text-align: left
+  
+  .wp-block-columns
+    &.dont-stack
+      flex-wrap: nowrap
+      .content-image
+        +mq-max($columns-stack)
+          &:not(.dont-float)
+            float: none
+            margin-left: 0
+    &.social-images
+      flex-wrap: wrap
+      margin: 0 -#{$content-space/4}
+      .wp-block-column
+        flex-basis: 25%!important
+        margin: 0
+        padding: $content-space/4
+    +mq-max($columns-stack)
+      &.dont-stack
+        .wp-block-column[style='flex-basis:33.33%']
+          flex-basis: 25%!important
+        .wp-block-column[style='flex-basis:66.66%']
+          flex-basis: 75%!important
+      &:not(.dont-stack)
+        flex-direction: column
+        >.wp-block-column
+          margin-left: 0
+          margin-bottom: $content-space/2
+        &:last-child
+          margin-bottom: 0
+          >.wp-block-column:last-child
+            margin-bottom: 0
+      &.social-images
+        .wp-block-column
+          flex-basis: 50%!important
+          margin: 0
+          padding: $content-space/4
+      &.state-maps
+        .has-text-align-center
+          text-align: left
   .explore_equity-improvements
     img
       width: 20em
@@ -464,7 +512,35 @@ table
         background-image: url(/themes/betterbus/images/numbered-number-bg.png)
         background-size: 100% auto
         background-position: center center
+        background-repeat: no-repeat
         transform: translateY(-50%)
+    +mq-max(1300px)
+      >*
+        padding-left: $content-space
+        &::before
+          font-size: 3rem
+          width: 5rem
+          height: 5rem
+          left: -2.5rem
+          line-height: 5rem
+          top: 4rem
+    +mq-max(700px)
+      >*
+        &::before
+          top: 2rem
+    +mq-max(500px)
+      >*
+        padding-left: $content-space/2
+        .wp-block-column:first-child
+          h3
+            padding-left: 2em
+        &::before
+          top: 2rem
+          font-size: 1.5rem
+          width: 2rem
+          height: 2rem
+          left: 1rem
+          line-height: 2rem
     +mq-max($nav-switch)
       .wp-block-image
         text-align: left
@@ -481,14 +557,37 @@ table
       background-image: url(/themes/betterbus/images/bonus.png)
       background-size: 100% auto
       background-position: center center
+    +mq-max(1300px)
+      padding-left: $content-space
+      &::before
+        width: 5rem
+        height: 5rem
+        left: -2.5rem
+        top: -1rem
+    +mq-max(500px)
+      .wp-block-column:first-child
+        h3
+          padding-left: 2em
+      padding-left: $content-space/2
+      &::before
+        top: 0
+        width: 2rem
+        height: 2rem
+        left: 1rem
   &.k-o
     color: $white
     h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
       color: $white
     a:not(.button):not(.wp-block-button__link)
       color: $white
+      text-decoration: underline
       &:visited
         color: $white
+        text-decoration: underline
+      &:hover
+        text-decoration: none
+        text-shadow: 0 0 10px rgba(0,0,0,.75)
+
   &.has-bg
     background-repeat: no-repeat
     background-size: cover
@@ -513,6 +612,11 @@ table
       z-index: 2
     & + .page-section
       padding-top: $content-space*2
+    +mq-max(500px)
+      .white-box
+        top: $content-space/2
+      & + .page-section
+        padding-top: $content-space
   &.intro-style-b
     position: relative
     &::after
@@ -554,30 +658,32 @@ table
     >*
       position: relative
       z-index: 1
-    &::after
-      content: ''
-      height: 20em
-      width: 35em
-      position: absolute
-      top: 0
-      right: 0
-      background: url('/themes/betterbus/images/top-right-squiggle-sparkle.png')
-      background-size: auto 100%
-      background-repeat: no-repeat
-      background-position: top right
-      z-index: 0
-    &::before
-      content: ''
-      height: 20em
-      width: $sidebar-width
-      position: absolute
-      top: 0
-      left: 0
-      background: url(/themes/betterbus/images/top-left-squiggle-sparkle.png)
-      background-size: auto 100%
-      background-repeat: no-repeat
-      background-position: top right
-      z-index: 0
+    +mq-min(1200px)
+      &::after
+        content: ''
+        height: 20em
+        width: 35em
+        position: absolute
+        top: 0
+        right: 0
+        background: url('/themes/betterbus/images/top-right-squiggle-sparkle.png')
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: top right
+        z-index: 0
+    +mq-min($nav-switch)
+      &::before
+        content: ''
+        height: 20em
+        width: $sidebar-width
+        position: absolute
+        top: 0
+        left: 0
+        background: url(/themes/betterbus/images/top-left-squiggle-sparkle.png)
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: top right
+        z-index: 0
   &.events
     background-image: url('/themes/betterbus/images/events-swirls.png')
   .events-list
@@ -781,6 +887,7 @@ table
       color: $dark-blue!important
       &:visited, &:link, &:hover
         color: $dark-blue!important
+        text-shadow: none!important
   h2
     &.explore_to-the-test
       color: $lime-green
@@ -824,7 +931,12 @@ table
       +mq-max($nav-switch)
         text-align: left
         &::before
-          left: -11.5em
+          transform: scaleX(-1)
+          left: auto
+          right: -8.5em
+      +mq-max(360px)
+        &::before
+          right: -10.5em
   
 .site-footer
   padding: 0

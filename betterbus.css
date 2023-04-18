@@ -38,11 +38,6 @@ h1, .h1 {
     font-size: 3em;
   }
 }
-@media screen and (max-width: 699px) {
-  h1, .h1 {
-    font-size: 2.5em;
-  }
-}
 
 h2, .h2 {
   font-size: 3.125em;
@@ -52,23 +47,13 @@ h2, .h2 {
     font-size: 2.5em;
   }
 }
-@media screen and (max-width: 699px) {
-  h2, .h2 {
-    font-size: 2em;
-  }
-}
 
 h3, .h3 {
   font-size: 1.75em;
 }
 @media screen and (max-width: 1099px) {
   h3, .h3 {
-    font-size: 1.5em;
-  }
-}
-@media screen and (max-width: 699px) {
-  h3, .h3 {
-    font-size: 1.25em;
+    font-size: 1.625em;
   }
 }
 
@@ -124,6 +109,12 @@ table {
 .white-box.content-image {
   padding: 0;
 }
+@media screen and (max-width: 699px) {
+  .white-box {
+    padding: 1.5rem;
+    border-radius: 1.25rem !important;
+  }
+}
 
 .has-watermark {
   position: relative;
@@ -146,34 +137,23 @@ table {
   left: -10%;
   z-index: 0;
 }
-.has-watermark.large-watermark {
-  padding: 0;
-}
-.has-watermark.large-watermark::after {
-  width: 180%;
-  height: 180%;
-  top: -40%;
-  left: -40%;
+@media screen and (min-width: 1000px) {
+  .has-watermark.large-watermark {
+    padding: 0;
+  }
+  .has-watermark.large-watermark::after {
+    width: 180%;
+    height: 180%;
+    top: -40%;
+    left: -40%;
+  }
 }
 @media screen and (max-width: 699px) {
-  .has-watermark {
-    margin-bottom: 3rem;
-    top: -3rem;
-  }
   .has-watermark::after {
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-  }
-  .has-watermark.large-watermark {
-    padding: 0;
-  }
-  .has-watermark.large-watermark::after {
-    width: 120%;
-    height: 120%;
-    top: -10%;
-    left: -10%;
   }
 }
 
@@ -190,7 +170,7 @@ table {
   border: 2px solid #005289;
   border-radius: 3em;
   overflow: hidden;
-  text-decoration: none;
+  text-decoration: none !important;
   display: inline-block;
 }
 .wp-block-button__link::after, .wp-block-button__link::before, .button::after, .page-section .events-list .more-link a::after, .button::before, .page-section .events-list .more-link a::before, .wp-block-button__link:visited::after, .wp-block-button__link:visited::before, .button:visited::after, .button:visited::before {
@@ -237,6 +217,11 @@ table {
   border-radius: 2.5rem !important;
   overflow: hidden;
 }
+@media screen and (max-width: 699px) {
+  .rounded {
+    border-radius: 1.25rem !important;
+  }
+}
 
 .node__content {
   font-size: 1em;
@@ -259,6 +244,24 @@ table {
   position: absolute;
   left: -3.5em;
   top: -0.5em;
+}
+
+@media screen and (max-width: 999px) {
+  .medium-stack {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .medium-stack > p {
+    -ms-flex-negative: 2;
+        flex-shrink: 2;
+  }
+  .medium-stack .content-image {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
 }
 
 .container {
@@ -356,6 +359,7 @@ table {
     right: -3rem;
     bottom: -3rem;
     background: url(/themes/betterbus/images/navbg-shadow.png);
+    background-repeat: no-repeat;
     background-position: top right;
     background-size: cover;
     z-index: 0;
@@ -405,6 +409,7 @@ table {
     right: -3rem;
     bottom: -3rem;
     background: url(/themes/betterbus/images/mobile-nav-bg-shadow.png);
+    background-repeat: no-repeat;
     background-position: bottom center;
     background-size: 100% auto;
     z-index: 0;
@@ -414,6 +419,7 @@ table {
     content: "";
     z-index: 1;
     background-image: url("/themes/betterbus/images/mobile-nav-bg.png");
+    background-repeat: no-repeat;
     padding: 0 0 1em 0;
     background-size: 100% auto;
     background-position: bottom center;
@@ -472,6 +478,11 @@ table {
     padding-top: 0;
   }
 }
+@media screen and (max-width: 499px) {
+  .page-section {
+    padding: 3rem 1.5rem;
+  }
+}
 .page-section > * {
   max-width: 66rem;
 }
@@ -497,22 +508,6 @@ table {
   font-size: 0.75em;
   line-height: 1.1;
 }
-.page-section .wp-block-columns.dont-stack {
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-}
-@media screen and (max-width: 999px) {
-  .page-section .wp-block-columns:not(.dont-stack) {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .page-section .wp-block-columns:not(.dont-stack) > .wp-block-column {
-    margin-left: 0;
-    margin-bottom: 3rem;
-  }
-}
 .page-section .wp-block-image.content-image {
   text-align: center;
 }
@@ -530,7 +525,79 @@ table {
     width: 12em;
   }
   .page-section .wp-block-image.content-image.smaller img {
-    width: 8em;
+    width: 12em;
+  }
+  .page-section .wp-block-image.content-image:not(.dont-float) {
+    float: right;
+    margin-left: 0.5em;
+  }
+  .page-section .wp-block-image.content-image.stack-center, .page-section .wp-block-image.content-image.stack-left {
+    float: none;
+    margin: 0;
+    text-align: center;
+  }
+  .page-section .wp-block-image.content-image.stack-center img, .page-section .wp-block-image.content-image.stack-left img {
+    max-width: 100%;
+    width: 18em;
+  }
+  .page-section .wp-block-image.content-image.stack-left {
+    text-align: left;
+  }
+}
+.page-section .wp-block-columns.dont-stack {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+@media screen and (max-width: 999px) {
+  .page-section .wp-block-columns.dont-stack .content-image:not(.dont-float) {
+    float: none;
+    margin-left: 0;
+  }
+}
+.page-section .wp-block-columns.social-images {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -0.75rem;
+}
+.page-section .wp-block-columns.social-images .wp-block-column {
+  -ms-flex-preferred-size: 25% !important;
+      flex-basis: 25% !important;
+  margin: 0;
+  padding: 0.75rem;
+}
+@media screen and (max-width: 999px) {
+  .page-section .wp-block-columns.dont-stack .wp-block-column[style="flex-basis:33.33%"] {
+    -ms-flex-preferred-size: 25% !important;
+        flex-basis: 25% !important;
+  }
+  .page-section .wp-block-columns.dont-stack .wp-block-column[style="flex-basis:66.66%"] {
+    -ms-flex-preferred-size: 75% !important;
+        flex-basis: 75% !important;
+  }
+  .page-section .wp-block-columns:not(.dont-stack) {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .page-section .wp-block-columns:not(.dont-stack) > .wp-block-column {
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  .page-section .wp-block-columns:not(.dont-stack):last-child {
+    margin-bottom: 0;
+  }
+  .page-section .wp-block-columns:not(.dont-stack):last-child > .wp-block-column:last-child {
+    margin-bottom: 0;
+  }
+  .page-section .wp-block-columns.social-images .wp-block-column {
+    -ms-flex-preferred-size: 50% !important;
+        flex-basis: 50% !important;
+    margin: 0;
+    padding: 0.75rem;
+  }
+  .page-section .wp-block-columns.state-maps .has-text-align-center {
+    text-align: left;
   }
 }
 .page-section .explore_equity-improvements img {
@@ -601,8 +668,43 @@ table {
   background-image: url(/themes/betterbus/images/numbered-number-bg.png);
   background-size: 100% auto;
   background-position: center center;
+  background-repeat: no-repeat;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+@media screen and (max-width: 1299px) {
+  .page-section .numbered-sub-sections > * {
+    padding-left: 3rem;
+  }
+  .page-section .numbered-sub-sections > *::before {
+    font-size: 3rem;
+    width: 5rem;
+    height: 5rem;
+    left: -2.5rem;
+    line-height: 5rem;
+    top: 4rem;
+  }
+}
+@media screen and (max-width: 699px) {
+  .page-section .numbered-sub-sections > *::before {
+    top: 2rem;
+  }
+}
+@media screen and (max-width: 499px) {
+  .page-section .numbered-sub-sections > * {
+    padding-left: 1.5rem;
+  }
+  .page-section .numbered-sub-sections > * .wp-block-column:first-child h3 {
+    padding-left: 2em;
+  }
+  .page-section .numbered-sub-sections > *::before {
+    top: 2rem;
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    left: 1rem;
+    line-height: 2rem;
+  }
 }
 @media screen and (max-width: 699px) {
   .page-section .numbered-sub-sections .wp-block-image {
@@ -624,6 +726,31 @@ table {
   background-size: 100% auto;
   background-position: center center;
 }
+@media screen and (max-width: 1299px) {
+  .page-section .bonus-sub-section {
+    padding-left: 3rem;
+  }
+  .page-section .bonus-sub-section::before {
+    width: 5rem;
+    height: 5rem;
+    left: -2.5rem;
+    top: -1rem;
+  }
+}
+@media screen and (max-width: 499px) {
+  .page-section .bonus-sub-section {
+    padding-left: 1.5rem;
+  }
+  .page-section .bonus-sub-section .wp-block-column:first-child h3 {
+    padding-left: 2em;
+  }
+  .page-section .bonus-sub-section::before {
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    left: 1rem;
+  }
+}
 .page-section.k-o {
   color: #ffffff;
 }
@@ -632,9 +759,15 @@ table {
 }
 .page-section.k-o a:not(.button):not(.wp-block-button__link) {
   color: #ffffff;
+  text-decoration: underline;
 }
 .page-section.k-o a:not(.button):not(.wp-block-button__link):visited {
   color: #ffffff;
+  text-decoration: underline;
+}
+.page-section.k-o a:not(.button):not(.wp-block-button__link):hover {
+  text-decoration: none;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
 .page-section.has-bg {
   background-repeat: no-repeat;
@@ -667,6 +800,14 @@ table {
 }
 .page-section.intro-style-a + .page-section {
   padding-top: 6rem;
+}
+@media screen and (max-width: 499px) {
+  .page-section.intro-style-a .white-box {
+    top: 1.5rem;
+  }
+  .page-section.intro-style-a + .page-section {
+    padding-top: 3rem;
+  }
 }
 .page-section.intro-style-b {
   position: relative;
@@ -723,31 +864,35 @@ table {
   position: relative;
   z-index: 1;
 }
-.page-section.top-swirl-sparkles::after {
-  content: "";
-  height: 20em;
-  width: 35em;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: url("/themes/betterbus/images/top-right-squiggle-sparkle.png");
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: top right;
-  z-index: 0;
+@media screen and (min-width: 1200px) {
+  .page-section.top-swirl-sparkles::after {
+    content: "";
+    height: 20em;
+    width: 35em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url("/themes/betterbus/images/top-right-squiggle-sparkle.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    z-index: 0;
+  }
 }
-.page-section.top-swirl-sparkles::before {
-  content: "";
-  height: 20em;
-  width: 18rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url(/themes/betterbus/images/top-left-squiggle-sparkle.png);
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: top right;
-  z-index: 0;
+@media screen and (min-width: 700px) {
+  .page-section.top-swirl-sparkles::before {
+    content: "";
+    height: 20em;
+    width: 18rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(/themes/betterbus/images/top-left-squiggle-sparkle.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    z-index: 0;
+  }
 }
 .page-section.events {
   background-image: url("/themes/betterbus/images/events-swirls.png");
@@ -1014,6 +1159,7 @@ table {
 }
 .page-section .white-box a:not(.wp-block-button__link):visited, .page-section .white-box a:not(.wp-block-button__link):link, .page-section .white-box a:not(.wp-block-button__link):hover, .page-section .white-box a:not(.button):visited, .page-section .white-box a:not(.button):link, .page-section .white-box a:not(.button):hover {
   color: #005289 !important;
+  text-shadow: none !important;
 }
 .page-section h2.explore_to-the-test {
   color: #CBDB2F;
@@ -1071,7 +1217,15 @@ table {
     text-align: left;
   }
   .page-section h2.explore_see-for-yourself::before {
-    left: -11.5em;
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+    left: auto;
+    right: -8.5em;
+  }
+}
+@media screen and (max-width: 359px) {
+  .page-section h2.explore_see-for-yourself::before {
+    right: -10.5em;
   }
 }
 
